@@ -1,5 +1,6 @@
 package com.example.ali.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -53,6 +54,10 @@ LoginDataBaseAdapter loginDataBaseAdapter;
                     // Save the Data in Database
                     loginDataBaseAdapter.insertEntry(userName, password);
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(getApplicationContext(), loginActivity.class);
+                    startActivity(intent);
+                    finish();
 
                 }
             }

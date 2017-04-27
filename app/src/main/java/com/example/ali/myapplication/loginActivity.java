@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class loginActivity extends AppCompatActivity {
 
-    Button btnSignIn,btnSignUp;
+    Button btnSignIn, btnSignUp;
     LoginDataBaseAdapter loginDataBaseAdapter;
 
     @Override
@@ -20,12 +20,12 @@ public class loginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // create a instance of SQLite Database
-        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
-        loginDataBaseAdapter=loginDataBaseAdapter.open();
+        loginDataBaseAdapter = new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter = loginDataBaseAdapter.open();
 
         // Get The Refference Of Buttons
-        btnSignIn=(Button)findViewById(R.id.buttonSignIN);
-        btnSignUp=(Button)findViewById(R.id.buttonSignUP);
+        btnSignIn = (Button) findViewById(R.id.buttonSignIN);
+        btnSignUp = (Button) findViewById(R.id.buttonSignUP);
 
         // Set OnClick Listener on SignUp button
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -33,48 +33,61 @@ public class loginActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
 
                 /// Create Intent for SignUpActivity  abd Start The Activity
-                Intent intentSignUP=new Intent(getApplicationContext(),SignUPActivity.class);
+                Intent intentSignUP = new Intent(getApplicationContext(), SignUPActivity.class);
                 startActivity(intentSignUP);
             }
         });
 
     }
 
-    public void signIn(View V)
-    {
+    public void signIn(View V) {
         final Dialog dialog = new Dialog(loginActivity.this);
         dialog.setContentView(R.layout.login);
         dialog.setTitle("Login");
 
-        // get the Refferences of views
-        final  EditText editTextUserName=(EditText)dialog.findViewById(R.id.editTextUserNameToLogin);
-        final  EditText editTextPassword=(EditText)dialog.findViewById(R.id.editTextPasswordToLogin);
+        // get the References of views
+        final EditText editTextUserName = (EditText) dialog.findViewById(R.id.editTextUserNameToLogin);
+        final EditText editTextPassword = (EditText) dialog.findViewById(R.id.editTextPasswordToLogin);
 
-        Button btnSignIn=(Button)dialog.findViewById(R.id.buttonSignIn);
+        Button btnSignIn = (Button) dialog.findViewById(R.id.buttonSignIn);
+
+        Button btnForgetpassword = (Button) dialog.findViewById(R.id.buttonforgetpassword);
+
+        btnForgetpassword.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                dialog.setContentView(R.layout.forget);
+                String userName = editTextUserName.getText().toString();
+                if (userName != null && userName.equalsIgnoreCase(loginDataBaseAdapter.getPassword(userName))) {
+                    Toast.makeText(loginActivity.this, "Congrats: Yor are now going to reset Password ", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
 
         // Set On ClickListener
         btnSignIn.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 // get The User name and Password
-                String userName=editTextUserName.getText().toString();
-                String password=editTextPassword.getText().toString();
+                String userName = editTextUserName.getText().toString();
+                String password = editTextPassword.getText().toString();
 
                 // fetch the Password form database for respective user name
-                String storedPassword=loginDataBaseAdapter.getSinlgeEntry(userName);
+                String storedPassword = loginDataBaseAdapter.getSinlgeEntry(userName);
 
                 // check if the Stored password matches with  Password entered by user
-                if(password.equals(storedPassword))
-                {
+                if (password.equals(storedPassword)) {
                     Toast.makeText(loginActivity.this, "Congrats: Login Successfull", Toast.LENGTH_LONG).show();
                     dialog.dismiss();
-                }
-                else
-                {
+                } else {
                     Toast.makeText(loginActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
 
         dialog.show();
     }
