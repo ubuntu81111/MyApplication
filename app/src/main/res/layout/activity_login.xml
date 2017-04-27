@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ali.myapplication.loginActivity" android:backgroundTint="@android:color/background_light" android:background="@android:color/background_light" >
+
+
+    <Button
+        android:id="@+id/buttonSignIN"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign In"
+        android:onClick="signIn"
+        tools:layout_editor_absoluteY="438dp"
+        tools:layout_editor_absoluteX="25dp"/>
+
+    <Button
+        android:id="@+id/buttonSignUP"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        tools:layout_editor_absoluteY="360dp"
+        tools:layout_editor_absoluteX="0dp"/>
+
+</android.support.constraint.ConstraintLayout>
