@@ -5,24 +5,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ali.myapplication.loginActivity" android:backgroundTint="@android:color/background_light" android:background="@android:color/background_light" >
+    android:background="@android:color/background_light"
+    android:backgroundTint="@android:color/background_light"
+    tools:context="com.example.ali.myapplication.loginActivity">
 
-
-    <Button
-        android:id="@+id/buttonSignIN"
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:onClick="signIn"
-        tools:layout_editor_absoluteY="438dp"
-        tools:layout_editor_absoluteX="25dp"/>
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:gravity="center|bottom">
 
-    <Button
-        android:id="@+id/buttonSignUP"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        tools:layout_editor_absoluteY="360dp"
-        tools:layout_editor_absoluteX="0dp"/>
+        <Button
+            android:id="@+id/buttonSignIN"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:onClick="signIn"
+            android:text="Sign In"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="265dp"/>
+
+        <Button
+            android:id="@+id/buttonSignUP"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="194dp"/>
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -53,6 +53,7 @@ LoginDataBaseAdapter loginDataBaseAdapter;
                     // Save the Data in Database
                     loginDataBaseAdapter.insertEntry(userName, password);
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
+
                 }
             }
         });
