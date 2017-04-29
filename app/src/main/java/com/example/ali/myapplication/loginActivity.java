@@ -14,6 +14,8 @@ public class loginActivity extends AppCompatActivity {
     Button btnSignIn, btnSignUp;
     LoginDataBaseAdapter loginDataBaseAdapter;
 
+
+     Dialog dialogForget;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +32,12 @@ public class loginActivity extends AppCompatActivity {
         // Set OnClick Listener on SignUp button
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // TODO Auto-generated method stub
 
                 /// Create Intent for SignUpActivity  abd Start The Activity
                 Intent intentSignUP = new Intent(getApplicationContext(), SignUPActivity.class);
                 startActivity(intentSignUP);
             }
         });
-
     }
 
     public void signIn(View V) {
@@ -45,27 +45,56 @@ public class loginActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.login);
         dialog.setTitle("Login");
 
+
         // get the References of views
         final EditText editTextUserName = (EditText) dialog.findViewById(R.id.editTextUserNameToLogin);
         final EditText editTextPassword = (EditText) dialog.findViewById(R.id.editTextPasswordToLogin);
 
         Button btnSignIn = (Button) dialog.findViewById(R.id.buttonSignIn);
 
+
         Button btnForgetpassword = (Button) dialog.findViewById(R.id.buttonforgetpassword);
 
+
         btnForgetpassword.setOnClickListener(new View.OnClickListener() {
+
 
             @Override
             public void onClick(View view) {
 
-                dialog.setContentView(R.layout.forget);
-                String userName = editTextUserName.getText().toString();
-                if (userName != null && userName.equalsIgnoreCase(loginDataBaseAdapter.getPassword(userName))) {
-                    Toast.makeText(loginActivity.this, "Congrats: Yor are now going to reset Password ", Toast.LENGTH_SHORT).show();
-                }
+
+                final Dialog dialogForget = new Dialog(loginActivity.this);
+                dialogForget.setContentView(R.layout.forget);
+                dialogForget.setTitle("Forget");
+
+
+
+
+
+                Button btnForgetPasswordforreset = (Button) dialogForget.findViewById(R.id.buttonforgetpasswordforreset);
+
+                final EditText editTextUserNameforget = (EditText) dialogForget.findViewById(R.id.editTextUserNameToLoginForget);
+                btnForgetPasswordforreset.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String userName = editTextUserNameforget.getText().toString();
+                        String userNameInDb = loginDataBaseAdapter.getUserName(userName);
+                        if (userName.equalsIgnoreCase(userNameInDb)) {
+                            Toast.makeText(loginActivity.this, "Congrats: Yor are now going to reset Password ", Toast.LENGTH_SHORT).show();
+                            dialogForget.dismiss();
+                        }
+
+
+                    }
+                });
+
+                dialogForget.show();
 
             }
         });
+
+
+
 
         // Set On ClickListener
         btnSignIn.setOnClickListener(new View.OnClickListener() {

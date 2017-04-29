@@ -75,7 +75,7 @@ public class LoginDataBaseAdapter {
         return password;
     }
 
-    public String getPassword(String userName) {
+    public String getUserName(String userName) {
         Cursor cursor = db.query("LOGIN", null, "USERNAME=?", new String[]{userName}, null, null, null);
         if (cursor.getCount() < 1)//UserName Not Exist
         {
