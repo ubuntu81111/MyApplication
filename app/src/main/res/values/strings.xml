@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="security_prompt">Security Questions</string>
+    <string-array name="security_questions">
+        <item>Your Phone no</item>
+        <item>Your First toy</item>
+        <item>Your Vehicle no</item>
+        <item>Your Friend</item>
+    </string-array>
 </resources>

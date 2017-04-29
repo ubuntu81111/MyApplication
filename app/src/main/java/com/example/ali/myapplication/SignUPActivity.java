@@ -6,12 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class SignUPActivity extends AppCompatActivity {
-    EditText editTextUserName,editTextPassword,editTextConfirmPassword;
+    EditText editTextUserName,editTextPassword,editTextConfirmPassword,spinnerAnswer;
     Button btnCreateAccount;
 LoginDataBaseAdapter loginDataBaseAdapter;
+Spinner securitySpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,8 @@ LoginDataBaseAdapter loginDataBaseAdapter;
         editTextUserName=(EditText)findViewById(R.id.editTextUserName);
         editTextPassword=(EditText)findViewById(R.id.editTextPassword);
         editTextConfirmPassword=(EditText)findViewById(R.id.editTextConfirmPassword);
+securitySpinner=(Spinner)findViewById(R.id.secutity_spinner);
+        spinnerAnswer= (EditText) findViewById(R.id.Spinneranswer);
 
         btnCreateAccount=(Button)findViewById(R.id.buttonCreateAccount);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +43,7 @@ LoginDataBaseAdapter loginDataBaseAdapter;
                 String confirmPassword=editTextConfirmPassword.getText().toString();
 
                 // check if any of the fields are vaccant
-                if(userName.equals("")||password.equals("")||confirmPassword.equals(""))
+                if(userName.equals("")||password.equals("")||confirmPassword.equals("")||spinnerAnswer.equals(""))
                 {
                     Toast.makeText(getApplicationContext(), "Field Vaccant", Toast.LENGTH_LONG).show();
                     return;

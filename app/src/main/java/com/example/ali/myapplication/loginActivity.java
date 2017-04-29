@@ -78,10 +78,15 @@ public class loginActivity extends AppCompatActivity {
                         String userName = editTextUserNameforget.getText().toString();
                         String userNameInDb = loginDataBaseAdapter.getUserName(userName);
                         if (userName.equalsIgnoreCase(userNameInDb)) {
-                            Toast.makeText(loginActivity.this, "Congrats: Yor are now going to reset Password ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(loginActivity.this, " Yor are now going to reset Password ", Toast.LENGTH_SHORT).show();
                             dialogForget.dismiss();
+
+
+
+
+
                         } else {
-                            Toast.makeText(loginActivity.this, "check you user name as its not registered", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(loginActivity.this, "Check you user name as its not registered", Toast.LENGTH_SHORT).show();
                             dialogForget.dismiss();
                         }
                     }
