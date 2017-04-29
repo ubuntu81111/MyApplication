@@ -15,7 +15,8 @@ public class loginActivity extends AppCompatActivity {
     LoginDataBaseAdapter loginDataBaseAdapter;
 
 
-     Dialog dialogForget;
+    Dialog dialogForget;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +69,6 @@ public class loginActivity extends AppCompatActivity {
                 dialogForget.setTitle("Forget");
 
 
-
-
-
                 Button btnForgetPasswordforreset = (Button) dialogForget.findViewById(R.id.buttonforgetpasswordforreset);
 
                 final EditText editTextUserNameforget = (EditText) dialogForget.findViewById(R.id.editTextUserNameToLoginForget);
@@ -82,9 +80,10 @@ public class loginActivity extends AppCompatActivity {
                         if (userName.equalsIgnoreCase(userNameInDb)) {
                             Toast.makeText(loginActivity.this, "Congrats: Yor are now going to reset Password ", Toast.LENGTH_SHORT).show();
                             dialogForget.dismiss();
+                        } else {
+                            Toast.makeText(loginActivity.this, "check you user name as its not registered", Toast.LENGTH_SHORT).show();
+                            dialogForget.dismiss();
                         }
-
-
                     }
                 });
 
@@ -92,8 +91,6 @@ public class loginActivity extends AppCompatActivity {
 
             }
         });
-
-
 
 
         // Set On ClickListener
