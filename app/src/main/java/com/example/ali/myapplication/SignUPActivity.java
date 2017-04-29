@@ -10,10 +10,10 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class SignUPActivity extends AppCompatActivity {
-    EditText editTextUserName,editTextPassword,editTextConfirmPassword,spinnerAnswer;
+    EditText editTextUserName, editTextPassword, editTextConfirmPassword, editTextSpinnerAnswer;
     Button btnCreateAccount;
-LoginDataBaseAdapter loginDataBaseAdapter;
-Spinner securitySpinner;
+    LoginDataBaseAdapter loginDataBaseAdapter;
+    Spinner securitySpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,42 +22,38 @@ Spinner securitySpinner;
         setContentView(R.layout.signup);
 
         // get Instance  of Database Adapter
-        loginDataBaseAdapter=new LoginDataBaseAdapter(this);
-        loginDataBaseAdapter=loginDataBaseAdapter.open();
+        loginDataBaseAdapter = new LoginDataBaseAdapter(this);
+        loginDataBaseAdapter = loginDataBaseAdapter.open();
 
         // Get Refferences of Views
-        editTextUserName=(EditText)findViewById(R.id.editTextUserName);
-        editTextPassword=(EditText)findViewById(R.id.editTextPassword);
-        editTextConfirmPassword=(EditText)findViewById(R.id.editTextConfirmPassword);
-securitySpinner=(Spinner)findViewById(R.id.secutity_spinner);
-        spinnerAnswer= (EditText) findViewById(R.id.Spinneranswer);
+        editTextUserName = (EditText) findViewById(R.id.editTextUserName);
+        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword);
+        securitySpinner = (Spinner) findViewById(R.id.secutity_spinner);
+        editTextSpinnerAnswer = (EditText) findViewById(R.id.Spinneranswer);
 
-        btnCreateAccount=(Button)findViewById(R.id.buttonCreateAccount);
+        btnCreateAccount = (Button) findViewById(R.id.buttonCreateAccount);
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 // TODO Auto-generated method stub
 
-                String userName=editTextUserName.getText().toString();
-                String password=editTextPassword.getText().toString();
-                String confirmPassword=editTextConfirmPassword.getText().toString();
-
+                String userName = editTextUserName.getText().toString();
+                String password = editTextPassword.getText().toString();
+                String confirmPassword = editTextConfirmPassword.getText().toString();
+                String spinnerAnswer = editTextSpinnerAnswer.getText().toString();
                 // check if any of the fields are vaccant
-                if(userName.equals("")||password.equals("")||confirmPassword.equals("")||spinnerAnswer.equals(""))
-                {
+                if (userName.equals("") || password.equals("") || confirmPassword.equals("") || spinnerAnswer.equals("")) {
                     Toast.makeText(getApplicationContext(), "Field Vaccant", Toast.LENGTH_LONG).show();
                     return;
                 }
                 // check if both password matches
-                if(!password.equals(confirmPassword))
-                {
+                if (!password.equals(confirmPassword)) {
                     Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_LONG).show();
                     return;
-                }
-                else
-                {
+                } else {
                     // Save the Data in Database
-                    loginDataBaseAdapter.insertEntry(userName, password);
+                    loginDataBaseAdapter.insertEntry(userName, password, spinnerAnswer);
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(getApplicationContext(), loginActivity.class);
@@ -68,6 +64,7 @@ securitySpinner=(Spinner)findViewById(R.id.secutity_spinner);
             }
         });
     }
+
     @Override
     protected void onDestroy() {
         // TODO Auto-generated method stub

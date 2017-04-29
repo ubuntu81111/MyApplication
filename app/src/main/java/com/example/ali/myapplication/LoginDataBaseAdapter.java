@@ -9,6 +9,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.EditText;
 
 public class LoginDataBaseAdapter {
     static final String DATABASE_NAME = "login.db";
@@ -43,11 +44,12 @@ public class LoginDataBaseAdapter {
         return db;
     }
 
-    public void insertEntry(String userName, String password) {
+    public void insertEntry(String userName, String password, String spinnerAnswer) {
         ContentValues newValues = new ContentValues();
         // Assign values for each row.
         newValues.put("USERNAME", userName);
         newValues.put("PASSWORD", password);
+        newValues.put("SPINNERANSWER",spinnerAnswer);
 
         // Insert the row into your table
         db.insert("LOGIN", null, newValues);
