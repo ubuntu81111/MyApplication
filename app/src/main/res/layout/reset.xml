@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/editTextPasswordReset"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/editTextConfirmPasswordReset"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"/>
+
+    <Spinner
+        android:id="@+id/secutity_spinner_reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/security_questions"
+        android:focusable="false"
+        android:focusableInTouchMode="true"></Spinner>
+
+
+    <EditText
+        android:id="@+id/Spinneranswerreset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your answer for spinner"
+        >
+
+        <requestFocus/>
+    </EditText>
+    <Button
+        android:id="@+id/buttonAccountReset"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="Account Reset"/>
+
+
+</LinearLayout>
