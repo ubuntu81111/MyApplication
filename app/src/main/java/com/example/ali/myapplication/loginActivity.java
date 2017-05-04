@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class loginActivity extends AppCompatActivity implements View.OnClickListener {
+public class loginActivity extends AppCompatActivity  {
 
 
     Button btnSignIn, btnSignUp, btnForgetReset;
@@ -95,7 +95,51 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
                             dialogReset.show();
                             //
                             btnForgetReset = (Button) dialogReset.findViewById(R.id.buttonAccountReset);
-                            btnForgetReset.setOnClickListener(this);
+                            btnForgetReset.setOnClickListener(new View.OnClickListener() {
+
+                                @Override
+                                public void onClick(View v) {
+
+                                    //
+                                    final EditText editTextPassword = (EditText) dialogReset.findViewById(R.id.editTextPasswordReset);
+                                    final EditText editTextConfirmPasswordReset = (EditText) dialogReset.findViewById(R.id.editTextConfirmPasswordReset);
+                                    final Spinner questionSpinnerid = (Spinner) dialogReset.findViewById(R.id.secutity_spinner_reset);
+                                    final EditText editTextSpinnerAnswer = (EditText) dialogReset.findViewById(R.id.Spinneranswerreset);
+
+                                    //
+                                    String password = editTextPassword.getText().toString();
+                                    String conformPassword = editTextConfirmPasswordReset.getText().toString();
+                                    String spinnerAnswer = editTextSpinnerAnswer.getText().toString();
+                                    //to get text of the item selected on spinner
+                                    String questionSpinner = questionSpinnerid.getSelectedItem().toString();
+
+
+                                    //check if fields are empty
+                                    if (password.equals("") || conformPassword.equals("") || spinnerAnswer.equals("")) {
+                                        Toast.makeText(getApplicationContext(), "Field Vaccant", Toast.LENGTH_LONG).show();
+                                        return;
+                                    }
+
+                                    // check if both password matches
+                                    if (!password.equals(conformPassword)) {
+                                        Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_LONG).show();
+                                        return;
+                                    } else {
+                                        // Update the Data in Database
+                                        loginDataBaseAdapter.passwordReset(mUserName, password, spinnerAnswer, questionSpinner);
+                                        Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
+
+                                        Intent intent = new Intent(getApplicationContext(), loginActivity.class);
+                                        startActivity(intent);
+                                        finish();
+
+                                    }
+
+
+                                    Toast.makeText(getApplicationContext(), " reset complete", Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
 
 
                         } else {
@@ -137,51 +181,6 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
 
 
         dialog.show();
-    }
-
-
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.buttonAccountReset) {
-
-            //
-            final EditText editTextPassword = (EditText) dialogReset.findViewById(R.id.editTextPasswordReset);
-            final EditText editTextConfirmPasswordReset = (EditText) dialogReset.findViewById(R.id.editTextConfirmPasswordReset);
-            final Spinner questionSpinnerid = (Spinner) dialogReset.findViewById(R.id.secutity_spinner_reset);
-            final EditText editTextSpinnerAnswer = (EditText) dialogReset.findViewById(R.id.Spinneranswerreset);
-
-            //
-            String password = editTextPassword.getText().toString();
-            String conformPassword = editTextConfirmPasswordReset.getText().toString();
-            String spinnerAnswer = editTextSpinnerAnswer.getText().toString();
-            //to get text of the item selected on spinner
-            String questionSpinner = questionSpinnerid.getSelectedItem().toString();
-
-
-            //check if fields are empty
-            if (password.equals("") || conformPassword.equals("") || spinnerAnswer.equals("")) {
-                Toast.makeText(getApplicationContext(), "Field Vaccant", Toast.LENGTH_LONG).show();
-                return;
-            }
-
-            // check if both password matches
-            if (!password.equals(conformPassword)) {
-                Toast.makeText(getApplicationContext(), "Password does not match", Toast.LENGTH_LONG).show();
-                return;
-            } else {
-                // Update the Data in Database
-                loginDataBaseAdapter.passwordReset(mUserName, password, spinnerAnswer, questionSpinner);
-                Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
-
-                Intent intent = new Intent(getApplicationContext(), loginActivity.class);
-                startActivity(intent);
-                finish();
-
-            }
-
-
-            Toast.makeText(getApplicationContext()," reset complete",Toast.LENGTH_SHORT).show();
-        }
     }
 
 

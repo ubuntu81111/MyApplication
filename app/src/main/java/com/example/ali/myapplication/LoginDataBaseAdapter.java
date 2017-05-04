@@ -11,14 +11,17 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.EditText;
 
+import static android.R.attr.id;
+
 public class LoginDataBaseAdapter {
     static final String DATABASE_NAME = "login.db";
-    static final int DATABASE_VERSION = 1;
+    static final int DATABASE_VERSION = 2;
     public static final int NAME_COLUMN = 1;
     // TODO: Create public field for each column in your table.
     // SQL Statement to create a new database.
+
     static final String DATABASE_CREATE = "create table " + "LOGIN" +
-            "( " + "ID" + " integer primary key autoincrement," + "USERNAME  text,PASSWORD text,SPINNERANSWER text); ";
+            "( " + "ID" + " integer primary key autoincrement," + "USERNAME  text,PASSWORD text,SPINNERQUESTION text,SPINNERANSWER text); ";
     // Variable to hold the database instance
     public SQLiteDatabase db;
     // Context of the application using the database.
@@ -44,11 +47,12 @@ public class LoginDataBaseAdapter {
         return db;
     }
 
-    public void insertEntry(String userName, String password, String spinnerAnswer) {
+    public void insertEntry(String userName, String password,String spinnerQuestion, String spinnerAnswer) {
         ContentValues newValues = new ContentValues();
         // Assign values for each row.
         newValues.put("USERNAME", userName);
         newValues.put("PASSWORD", password);
+        newValues.put("SPINNERQUESTION",spinnerQuestion);
         newValues.put("SPINNERANSWER", spinnerAnswer);
 
         // Insert the row into your table
@@ -105,12 +109,15 @@ public class LoginDataBaseAdapter {
 
         ContentValues updatedValues = new ContentValues();
 
+
         updatedValues.put("PASSWORD", password);
         updatedValues.put("SPINNERQUESTION", spinnerQuestion);
         updatedValues.put("SPINNERANSWER", spinnerAnswer);
         updatedValues.put("USERNAME", userName);
 
+
         String where = "USERNAME = ?";
-        db.update("LOGIN", updatedValues, where, new String[]{userName});
+
+        db.update("LOGIN", updatedValues, where, null);
     }
 }

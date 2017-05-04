@@ -41,6 +41,7 @@ public class SignUPActivity extends AppCompatActivity {
                 String userName = editTextUserName.getText().toString();
                 String password = editTextPassword.getText().toString();
                 String confirmPassword = editTextConfirmPassword.getText().toString();
+                String securityQuestion=securitySpinner.getSelectedItem().toString();
                 String spinnerAnswer = editTextSpinnerAnswer.getText().toString();
                 // check if any of the fields are vaccant
                 if (userName.equals("") || password.equals("") || confirmPassword.equals("") || spinnerAnswer.equals("")) {
@@ -53,7 +54,7 @@ public class SignUPActivity extends AppCompatActivity {
                     return;
                 } else {
                     // Save the Data in Database
-                    loginDataBaseAdapter.insertEntry(userName, password, spinnerAnswer);
+                    loginDataBaseAdapter.insertEntry(userName, password, securityQuestion ,spinnerAnswer);
                     Toast.makeText(getApplicationContext(), "Account Successfully Created ", Toast.LENGTH_LONG).show();
 
                     Intent intent = new Intent(getApplicationContext(), loginActivity.class);
