@@ -34,4 +34,11 @@
 
     </LinearLayout>
 
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        app:layout_constraintGuide_begin="20dp"
+        android:orientation="horizontal"/>
+
 </android.support.constraint.ConstraintLayout>

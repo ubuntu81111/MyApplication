@@ -47,12 +47,12 @@ public class LoginDataBaseAdapter {
         return db;
     }
 
-    public void insertEntry(String userName, String password,String spinnerQuestion, String spinnerAnswer) {
+    public void insertEntry(String userName, String password, String spinnerQuestion, String spinnerAnswer) {
         ContentValues newValues = new ContentValues();
         // Assign values for each row.
         newValues.put("USERNAME", userName);
         newValues.put("PASSWORD", password);
-        newValues.put("SPINNERQUESTION",spinnerQuestion);
+        newValues.put("SPINNERQUESTION", spinnerQuestion);
         newValues.put("SPINNERANSWER", spinnerAnswer);
 
         // Insert the row into your table
@@ -109,15 +109,41 @@ public class LoginDataBaseAdapter {
 
         ContentValues updatedValues = new ContentValues();
 
-
         updatedValues.put("PASSWORD", password);
         updatedValues.put("SPINNERQUESTION", spinnerQuestion);
         updatedValues.put("SPINNERANSWER", spinnerAnswer);
         updatedValues.put("USERNAME", userName);
 
-
         String where = "USERNAME = ?";
 
-        db.update("LOGIN", updatedValues, where, null);
+        db.update("LOGIN", updatedValues, where, new String[]{userName});
+    }
+
+    public String getSpinner(String userName) {
+
+        Cursor cursor = db.query("LOGIN", null, "USERNAME=? ", new String[]{userName}, null, null, null);
+        if (cursor.getCount() < 1)//UserName Not Exist
+        {
+            cursor.close();
+            return "Not Exist";
+        }
+        cursor.moveToFirst();
+        String spinnerInDb = cursor.getString(cursor.getColumnIndex("SPINNERQUESTION"));
+        cursor.close();
+        return spinnerInDb;
+    }
+
+    public String getSpinneranswer(String userName) {
+
+        Cursor cursor = db.query("LOGIN", null, "SPINNERANSWER=?", new String[]{userName}, null, null, null);
+        if (cursor.getCount() < 1)//UserName Not Exist
+        {
+            cursor.close();
+            return "Not Exist";
+        }
+        cursor.moveToFirst();
+        String spinneranswerInDb = cursor.getString(cursor.getColumnIndex("SPINNERANSWER"));
+        cursor.close();
+        return spinneranswerInDb;
     }
 }

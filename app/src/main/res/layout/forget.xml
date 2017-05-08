@@ -5,7 +5,6 @@
               android:orientation="vertical">
 
 
-
     <EditText
         android:id="@+id/editTextUserNameToLoginForget"
         android:layout_width="match_parent"
@@ -16,12 +15,28 @@
         <requestFocus/>
     </EditText>
 
+    <Spinner
+        android:id="@+id/secutity_spinner_forget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/security_questions"
+        android:focusable="false"
+        android:focusableInTouchMode="true"></Spinner>
+
+
+    <EditText
+        android:id="@+id/Spinneranswerforget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Your answer for spinner"
+        />
+
+
     <Button
         android:id="@+id/buttonforgetpasswordforreset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Forgetpassword"/>
-
 
 
 </LinearLayout>
