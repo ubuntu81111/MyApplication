@@ -16,20 +16,24 @@
             android:theme="@android:style/Theme.Black.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
+
+
         </activity>
         <activity android:name=".loginActivity">
         </activity>
         <activity android:name=".SignUPActivity">
         </activity>
         <activity android:name=".Forget">
+        </activity>
+        <activity android:name=".PizzaMenu">
+        </activity>
+        <activity android:name=".ListDisplay">
+        </activity>
+        <activity android:name=".Offers">
+        </activity>
+        <activity android:name=".SingleListItem">
         </activity>
     </application>
 
