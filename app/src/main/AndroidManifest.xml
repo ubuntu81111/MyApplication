@@ -29,8 +29,8 @@
         </activity>
         <activity android:name=".SignUPActivity">
         </activity>
-
+        <activity android:name=".Forget">
+        </activity>
     </application>
 
-
-    </manifest>
+</manifest>
