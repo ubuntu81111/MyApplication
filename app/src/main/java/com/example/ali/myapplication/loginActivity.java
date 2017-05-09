@@ -79,8 +79,6 @@ public class loginActivity extends AppCompatActivity {
                     finish();
                     startActivity(intent);
 
-
-
                 } else {
                     Toast.makeText(loginActivity.this, "User Name or Password does not match", Toast.LENGTH_LONG).show();
                 }

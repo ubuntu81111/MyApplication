@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/holo_red_dark"
             android:text="Menu"
-            android:onClick="menu"
+
             />
 
         <Button
@@ -36,6 +36,6 @@
 
             android:background="@android:color/holo_red_dark"
             android:text="Offers"
-            android:onClick="offers"/>
+            />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
