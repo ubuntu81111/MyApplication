@@ -59,18 +59,22 @@ public class MyBaseAdapter extends BaseAdapter {
         mViewHolder.tvTitle.setText(currentListData.getTitle());
         mViewHolder.tvDesc.setText(currentListData.getDescription());
         mViewHolder.ivIcon.setImageResource(currentListData.getImgResId());
-
+       // mViewHolder.ivTick.setImageResource(currentListData.getImgResId());
         return convertView;
     }
 
-    private class MyViewHolder {
+
+
+    public class MyViewHolder {
         TextView tvTitle, tvDesc;
         ImageView ivIcon;
+        ImageView ivTick;
 
         public MyViewHolder(View item) {
             tvTitle = (TextView) item.findViewById(R.id.tvTitle);
             tvDesc = (TextView) item.findViewById(R.id.tvDesc);
             ivIcon = (ImageView) item.findViewById(R.id.ivIcon);
+            ivTick = (ImageView) item.findViewById(R.id.imageViewTick);
         }
     }
 }

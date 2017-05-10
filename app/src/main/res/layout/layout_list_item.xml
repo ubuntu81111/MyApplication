@@ -3,12 +3,21 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageViewTick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@android:drawable/checkbox_on_background"
+        android:visibility="invisible">
+    </ImageView>
 
     <ImageView
         android:id="@+id/ivIcon"
-        android:layout_width="wrap_content"
+        android:layout_width="162dp"
         android:layout_height="wrap_content"
         android:src="@drawable/images"/>
+
 
     <LinearLayout
         android:layout_width="wrap_content"

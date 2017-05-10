@@ -3,7 +3,11 @@ package com.example.ali.myapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,7 +19,7 @@ public class MainActivity extends Activity {
     ListView lvDetail;
     Context context = MainActivity.this;
     ArrayList myList = new ArrayList();
-
+    MyBaseAdapter myBaseAdapter;
     String[] title = new String[]{
             "Title 1", "Title 2", "Title 3", "Title 4",
             "Title 5", "Title 6", "Title 7", "Title 8"
@@ -38,7 +42,28 @@ public class MainActivity extends Activity {
         // insert data into the list before setting the adapter
         // otherwise it will generate NullPointerException  - Obviously
         getDataInList();
-        lvDetail.setAdapter(new MyBaseAdapter(context, myList));
+        myBaseAdapter = new MyBaseAdapter(context, myList);
+        lvDetail.setAdapter(myBaseAdapter);
+
+        lvDetail.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ImageView iVTick = (ImageView) view.findViewById(R.id.imageViewTick);
+                iVTick.setVisibility(View.VISIBLE);
+            }
+        });
+
+        lvDetail.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                ImageView imageView = (ImageView) view.findViewById(R.id.imageViewTick);
+                imageView.setVisibility(View.INVISIBLE);
+
+                return true;
+            }
+        });
+
+
     }
 
     private void getDataInList() {

@@ -1,5 +1,9 @@
 package com.example.ali.myapplication;
 
+import android.widget.ImageView;
+
+import static android.R.attr.visible;
+
 /**
  * Created by ali on 09-May-17.
  */
@@ -16,6 +20,7 @@ public class ListData {
     public void setDescription(String description) {
         Description = description;
     }
+
 
     public String getTitle() {
         return title;
