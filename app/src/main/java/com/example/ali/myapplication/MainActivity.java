@@ -3,6 +3,7 @@ package com.example.ali.myapplication;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ public class MainActivity extends Activity {
     Context context = MainActivity.this;
     ArrayList myList = new ArrayList();
     MyBaseAdapter myBaseAdapter;
+    FloatingActionButton mFloatingActionButton;
     String[] title = new String[]{
             "Title 1", "Title 2", "Title 3", "Title 4",
             "Title 5", "Title 6", "Title 7", "Title 8"
@@ -37,7 +39,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.floating_action_button_fab_with_listview);
         lvDetail = (ListView) findViewById(R.id.lvCustomList);
         // insert data into the list before setting the adapter
         // otherwise it will generate NullPointerException  - Obviously
@@ -62,7 +64,12 @@ public class MainActivity extends Activity {
                 return true;
             }
         });
-
+        mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"floating butn pressed",Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
