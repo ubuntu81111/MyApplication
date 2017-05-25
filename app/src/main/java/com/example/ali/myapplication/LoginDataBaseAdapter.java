@@ -11,6 +11,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.EditText;
 
+import static android.R.attr.description;
 import static android.R.attr.id;
 
 public class LoginDataBaseAdapter {
@@ -22,6 +23,12 @@ public class LoginDataBaseAdapter {
 
     static final String DATABASE_CREATE = "create table " + "LOGIN" +
             "( " + "ID" + " integer primary key autoincrement," + "USERNAME  text,PASSWORD text,SPINNERQUESTION text,SPINNERANSWER text); ";
+
+
+    /*
+        static final String DATABASE_CREATE1 = "create table " + "LOGIN" +
+                "( " + "ID" + " integer primary key autoincrement," + "description text,title text,image integer);";
+        */
     // Variable to hold the database instance
     public SQLiteDatabase db;
     // Context of the application using the database.
@@ -94,15 +101,19 @@ public class LoginDataBaseAdapter {
         return userNameInDB;
     }
 
-    public void updateEntry(String userName, String password) {
+    public void updateEntry(String description, String title, int imgResId) {
         // Define the updated row content.
         ContentValues updatedValues = new ContentValues();
-        // Assign values for each row.
-        updatedValues.put("USERNAME", userName);
-        updatedValues.put("PASSWORD", password);
+        // Assign values for each row./*
+        //updatedValues.put("USERNAME", userName);
+        //  updatedValues.put("PASSWORD", password);
 
-        String where = "USERNAME = ?";
-        db.update("LOGIN", updatedValues, where, new String[]{userName});
+        updatedValues.put("description", description);
+        updatedValues.put("title", title);
+        updatedValues.put("imgResId", imgResId);
+
+        /*String where = "USERNAME = ?";
+        db.update("Data", updatedValues, where, new String[]{userName});*/
     }
 
     public void passwordReset(String userName, String password, String spinnerAnswer, String spinnerQuestion) {

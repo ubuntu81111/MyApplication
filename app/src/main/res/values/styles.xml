@@ -1,11 +1,27 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+        <!--      <item name="windowActionBar">false</item>
+              <item name="windowNoTitle">true</item>-->
+        <item name="windowActionBar">false</item>
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
+
+    </style>
+    <string-array name="radio_buttons">
+        <item>buttonspeper</item>
+        <item>buttonmint</item>
+        <item>buttoncheese</item>
+        <item>buttonmizirila</item>
+    </string-array>
+
+    <attr name="sc_corner_radius" format="dimension" />
+    <attr name="sc_border_width" format="dimension" />
+    <attr name="sc_tint_color" format="color" />
+    <attr name="sc_checked_text_color" format="color" />
 </resources>

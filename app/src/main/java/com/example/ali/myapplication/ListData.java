@@ -38,5 +38,4 @@ public class ListData {
         this.imgResId = imgResId;
     }
 
-
 }

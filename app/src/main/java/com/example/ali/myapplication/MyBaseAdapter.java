@@ -64,7 +64,6 @@ public class MyBaseAdapter extends BaseAdapter {
     }
 
 
-
     public class MyViewHolder {
         TextView tvTitle, tvDesc;
         ImageView ivIcon;
